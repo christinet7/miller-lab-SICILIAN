@@ -9,7 +9,11 @@
 #SBATCH --nodes=1
 #SBATCH --mem=60Gb
 module load miniforge
-source activate diff-splicing-analysis
+module load star/2.7.11b
+conda activate diff-splicing-analysis
+module load gcc/11.4.0
+module load openmpi/4.1.4
+module load R/4.4.1
 date
 mkdir -p /project/cphg-millerlab/christine_tsai/01-diff-splice//02-outputs/rca1-1_S1_L001
 /project/cphg-millerlab/christine_tsai/01-diff-splice/SICILIAN/STAR/STAR_2.7.11b/Linux_x86_64/STAR --version
