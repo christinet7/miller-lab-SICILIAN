@@ -83,3 +83,42 @@ Note: the following assumes you are interested in running the default steps of S
 When you execute the SICILIAN.py script by using the command `python SICILIAN.py`, the script should handle making the slurm job scripts for the steps in the SICILIAN process that you set for it to execute by setting the boolean values for the parameters that control which steps are run. To confirm everything has worked properly in generating the slurm job scripts, you can check the 01-scripts directory which should contain the following scripts if you are following the default settings for running steps in SICILIAN: `run_class_input.sh`, `run_GLM.sh`, and `run_map.sh`.
 
 To keep track of the status of each step, you can execute the following command in the terminal: `squeue -u <your-computing-id> -i 3`. As each step of SICLIAN is running, be sure to monitor the .out and .err files found in the 02-outputs/log_files directory.
+
+If you encounter any issues with the R libraries that are used in the later steps of SICILIAN after STAR runs, it is possible that you might have to edit the `GLM_script_light.R` script by specifying *where* you want all the libraries to be installed. Since the HPC's migration to R 4.4, there have been frequent issues with libraries not being found -- possibly because it is looking/installing libraries in the wrong directory (4.3). 
+
+As an example, for the `cutpointr` library, I added the path to where I want the library to be installed by providing a value for the `lib` parameter. I would imagine that the location where you want to install the libraries would look quite similar to my path, just replacing my computing id (rtg7bs) with your own computing id. 
+
+`if (!require("cutpointr")) {`
+  `install.packages("cutpointr", dependencies = TRUE, lib="/sfs/gpfs/tardis/home/rtg7bs/R/goolf/4.4")`
+  `library(cutpointr)}`
+
+Steps to Check R Libraries via Command Line
+1. `cd /home/rtg7bs/R/goolf/4.4`, but replace my computing id with your computing id.  
+3. `ls` to check libraries installed in that directory 
+
+Other Tips When Facing R Dependency Issues
+1. `module load goolf R`
+2. `R` to launch R in the command line
+3. You can try installing and loading libraries within the command line. Use `q()` to quit
+
+
+# Using SpliZ to Quantify the Extent of Differential Splicing
+## Description
+[SpliZ](https://github.com/juliaolivieri/SpliZ_pipeline?tab=readme-ov-file) generates a "splicing Z score" for each gene-cell pair, and it can work directly with the class input file created as an output by SICILIAN.
+
+## Getting Started
+Installation and setup consists of the following steps:
+
+1. Clone the SpliZ repo
+
+    `git clone https://github.com/juliaolivieri/SpliZ_pipeline.git`
+2. `cd` into the directory for the newly cloned repo, and create a conda environment. The repo includes a file named `environment.yml` which outlines the dependencies for you already. 
+
+    `conda env create --name spliz_env --file=environment.yml`
+    Note: I have experienced this step to take longer than expected, especialling during the "Solving environment" step as the environment is being created.
+
+3. Activate the environment
+    `source activate spliz_env`
+
+## Running the Pipeline
+
