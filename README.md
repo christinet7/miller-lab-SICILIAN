@@ -115,7 +115,7 @@ Installation and setup consists of the following steps:
 2. `cd` into the directory for the newly cloned repo, and create a conda environment. The repo includes a file named `environment.yml` which outlines the dependencies for you already. 
 
     `conda env create --name spliz_env --file=environment.yml`
-    Note: I have experienced this step to take longer than expected, especialling during the "Solving environment" step as the environment is being created.
+    Note: I have experienced this step to take longer than expected, especialling during the "Solving environment" step as the environment is being created. Additionally, including the package version numbers was problematic, so if you are unsuccessful in running the `conda env create` command, locate the `environment.yml` file and delete all of the version numbers from the packages listed under "dependencies".
 
 3. Activate the environment
     `source activate spliz_env`
