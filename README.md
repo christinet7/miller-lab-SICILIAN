@@ -122,3 +122,12 @@ Installation and setup consists of the following steps:
 
 ## Running the Pipeline
 
+# SICILIAN Nextflow Pipeline
+This serves as a guide for running the SICILIAN pipeline through Nextflow which is recommended for 10x datasets.
+
+## Getting Started
+### Dependencies
+The installation of Nexflow requires the following:
+- Bash 3.2 or later
+- Java 17 or later
+
