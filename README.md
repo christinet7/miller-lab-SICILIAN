@@ -129,5 +129,19 @@ This serves as a guide for running the SICILIAN pipeline through Nextflow which 
 ### Dependencies
 The installation of Nexflow requires the following:
 - Bash 3.2 or later
-- Java 17 or later
+- Java 17 or later (use `java -version` to confirm installation)
+  
+1. Install Nextflow using Bioconda:
+    1. `conda config --add channels bioconda`
+    2. `conda config --add channels conda-forge`
+    3. `conda create --name env_nf nextflow`
+    4. `conda activate env_nf` to activate the environment
+
+Resource to refer to if the above instructions do not work: [Nextflow documenttion](https://www.nextflow.io/docs/latest/install.html)
+
+2. Install Docker
+    1. `cat /etc/os-release` to check OS distribution
+       Example: `NAME="Rocky Linux" VERSION="8.9 (Green Obsidian)"` indicates I am running a Red Hat Enterprise Linux (RHEL). I would then follow the Docker installation process for RHEL. 
+
+   
 
