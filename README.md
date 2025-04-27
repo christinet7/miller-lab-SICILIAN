@@ -124,6 +124,7 @@ Installation and setup consists of the following steps:
 
 # SICILIAN Nextflow Pipeline
 This serves as a guide for running the SICILIAN pipeline through Nextflow which is recommended for 10x datasets.
+NOTE: this tool is depreciated, but I will keep the documentation to show what I have tried. Some links that the documentation suggests you to go to or provide as arguments to nextflow are broken. 
 
 ## Getting Started
 ### Dependencies
@@ -139,9 +140,26 @@ The installation of Nexflow requires the following:
 
 Resource to refer to if the above instructions do not work: [Nextflow documenttion](https://www.nextflow.io/docs/latest/install.html)
 
-2. Install Docker
+2. Install Docker OR use your available containerization software
     1. `cat /etc/os-release` to check OS distribution
-       Example: `NAME="Rocky Linux" VERSION="8.9 (Green Obsidian)"` indicates I am running a Red Hat Enterprise Linux (RHEL). I would then follow the Docker installation process for RHEL. 
+       Example: `NAME="Rocky Linux" VERSION="8.9 (Green Obsidian)"` indicates I am running a Red Hat Enterprise Linux (RHEL). I would then follow the Docker installation process for RHEL.
+       Note: using Docker on Rivanna is not supported since installing Docker requires sudo privileges.
+
+Order of Commands I've tried to run Nextflow SICILIAN:
+
+`module load apptainer`
+
+`module load nextflow`
+
+`nextflow run salzmanlab/nf-sicilian -profile test -r dev`
+
+Executing the last command ultimately did not lead to the tool being downloaded and instead led to a dead end.
+
+# List of Other Tools I Have Explored
+- scASfind
+- UMI-tools
+- STARsolo
+- ELLIPSIS -- this tool looks the most promising, but I haven't tried inputting my own data since it requires some preprocessing (i.e., getting gene level counts for each cell and a list of neighboring cells for each cell). However, I did successfully run their toy dataset using their tool. I believe that for getting gene level counts for each cell, I would need to use STARsolo to align the data and start from scratch with the Alsaigh et al. data since STARsolo seems to be designed specifically for sc-RNA seq data, and in their manual, they mention the 10x Genomics Chromium System which is mentioned in the extraction protocol for the [Alsaigh et al. data](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM4837524). 
 
    
 
