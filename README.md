@@ -3,6 +3,18 @@ This serves as a guide for using SICILIAN through the UVA HPC.
 ## Description
 [SICILIAN](https://github.com/salzman-lab/SICILIAN?tab=readme-ov-file) (SIngle Cell precIse spLice estImAtioN) is a statistical wrapper that uses generalized linear statistical modeling to obtain high-confidence splice junction quantification in single cells. 
 ## Getting Started
+### Map of Documentation
+```
+miller-lab-SICILIAN/
+│
+├── scripts/
+│   ├── run_GLM.sh
+│   ├── run_class_input.sh
+│   └──run_map.sh
+├── Documentation of Issues with SICILIAN.pdf
+│  
+└── README.md
+```
 
 ### Dependencies
 Direct software dependencies include the following:
