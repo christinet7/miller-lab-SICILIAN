@@ -133,6 +133,9 @@ Installation and setup consists of the following steps:
     `source activate spliz_env`
 
 ## Running the Pipeline
+To run the test dataset: `snakemake -p --config datasets="test" --restart-times 0`
+
+Note that when I ran this command, I encountered an error saying the cellName column was missing.
 
 # SICILIAN Nextflow Pipeline
 This serves as a guide for running the SICILIAN pipeline through Nextflow which is recommended for 10x datasets.
